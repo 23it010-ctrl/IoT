@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logging Out...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      padding-top: 100px;
+    }
+
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #777;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Logging You Out...</h1>
+  <div class="loader"></div>
+  <p>Please wait, you will be redirected to the login page in <span id="countdown">10</span> seconds.</p>
+
+  <script>
+    let timeLeft = 10;
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownEl.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = "login.html"; // Change to your login page URL
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

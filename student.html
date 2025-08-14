@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student - Smart Attendance</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+        color: white;
+        background: radial-gradient(circle at right, rgba(0, 0, 0, 0.9), rgba(10, 20, 30, 0.95)),
+            url('https://cdn.pixabay.com/photo/2017/08/30/01/05/background-2690767_1280.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: 100vh;
+    }
+    header {
+        text-align: center;
+        padding: 20px;
+    }
+    header h1 {
+        color: gold;
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+    }
+    header h2 {
+        color: goldenrod;
+        font-size: 1.2rem;
+    }
+    table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+    th {
+        background: rgba(255, 215, 0, 0.2);
+        color: gold;
+        font-size: 1rem;
+    }
+    tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9rem;
+        color: #aaa;
+        background: rgba(255, 255, 255, 0.05);
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>DEPARTMENT OF INFORMATION TECHNOLOGY</h1>
+    <h2>Student Attendance Records</h2>
+</header>
+
+<table id="studentTable">
+    <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Section</th>
+        <th>Attendance %</th>
+    </tr>
+</table>
+
+<footer>
+    &copy; 2025 Smart Attendance Management System - PSR IT Department
+</footer>
+
+<script>
+    function loadStudents() {
+        let students = JSON.parse(localStorage.getItem("students")) || [];
+        const table = document.getElementById("studentTable");
+
+        students.forEach(student => {
+            table.innerHTML += `
+                <tr>
+                    <td>${student.roll}</td>
+                    <td>${student.name}</td>
+                    <td>${student.year}</td>
+                    <td>${student.section}</td>
+                    <td class="attendance">${student.attendance}%</td>
+                </tr>
+            `;
+        });
+    }
+    loadStudents();
+</script>
+
+</body>
+</html>
